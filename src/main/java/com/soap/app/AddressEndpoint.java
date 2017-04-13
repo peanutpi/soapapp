@@ -9,12 +9,10 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.soap.app.model.AddressModel;
-import com.soap.app.model2.AddressModel2;
 // import com.soap.app.populator.AddressPopulator;
 // import com.soap.app.service.AddressServiceImp;
 import com.soap.app.populator.AddressPopulator;
 import com.soap.app.service.IAddressService;
-import com.soap.app.service2.IAddressService2;
 
 import soap.com.app.producing_web_service.AddAddressRequest;
 import soap.com.app.producing_web_service.AddAddressResponse;
@@ -33,9 +31,6 @@ public class AddressEndpoint {
 
   @Autowired
   private IAddressService addressService;
-
-  @Autowired
-  private IAddressService2 addressService2;
 
   @Autowired
   private AddressPopulator addressPopulator;
@@ -86,15 +81,6 @@ public class AddressEndpoint {
   public GetAllAddressResponse getAllAddress() {
     GetAllAddressResponse response = new GetAllAddressResponse();
     List<AddressModel> addresses1 = addressService.getAllAddress();
-    List<AddressModel2> addresses2 = addressService2.getAllAddress();
-    for (AddressModel2 addressModel2 : addresses2) {
-      AddressModel address = new AddressModel();
-      address.setId(addressModel2.getId());
-      address.setNo(addressModel2.getNo());
-      address.setCity(addressModel2.getCity());
-      address.setStreet(addressModel2.getStreet());
-      addresses1.add(address);
-    }
     response.getResponse().addAll(addressPopulator.toExternalModel(addresses1));
     return response;
   }

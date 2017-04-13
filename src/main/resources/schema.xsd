@@ -9,12 +9,12 @@
 			<xs:element name="name" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="Void">
 		<xs:sequence>
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:element name="getCustomerRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -81,6 +81,12 @@
 
 	<xs:element name="getAllCustomerRequest">
 	</xs:element>
+	
+	<xs:element name="getAllCustomerRequest1">
+	</xs:element>
+	
+	<xs:element name="getAllCustomerRequest2">
+	</xs:element>
 
 	<xs:element name="getAllCustomerResponse">
 		<xs:complexType>
@@ -90,7 +96,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:complexType name="address">
 		<xs:sequence>
 			<xs:element name="city" type="xs:string" minOccurs="0" />
@@ -99,7 +105,7 @@
 			<xs:element name="number" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:element name="getAddressRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -175,7 +181,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:complexType name="item">
 		<xs:sequence>
 			<xs:element name="id" type="xs:long" minOccurs="0" />
@@ -183,7 +189,7 @@
 			<xs:element name="description" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:element name="getItemRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -259,7 +265,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:complexType name="saleOrder">
 		<xs:sequence>
 			<xs:element name="id" type="xs:long" minOccurs="0" />
@@ -267,7 +273,7 @@
 			<xs:element name="description" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:element name="getSaleOrderRequest">
 		<xs:complexType>
 			<xs:sequence>

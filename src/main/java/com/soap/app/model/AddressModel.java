@@ -1,6 +1,5 @@
 package com.soap.app.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +10,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class AddressModel {
 	@Id
-	@Column(name="id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADD_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADD_SEQ")
     @SequenceGenerator(sequenceName = "address_seq", allocationSize = 1, name = "ADD_SEQ")
 	private Long id;
 	private String city;

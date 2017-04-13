@@ -22,7 +22,6 @@ public class AddressServiceImp implements IAddressService {
     return addressDAO.getAddress(id);
   }
 
-  @Transactional("datasource1TransactionManager")
   public List<AddressModel> getAllAddress() {
     List<AddressModel> addresss = addressDAO.getAllAddresss();
     return addresss;
