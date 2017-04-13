@@ -1,0 +1,14 @@
+#server:
+#  port: 8080
+
+#spring:
+#  datasource:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost/vtexintegration
+#    password: root
+#    username: root
+#    test-on-borrow: true
+#    test-while-idle: true
+#    test-on-return: true
+#    remove-abandoned: true
+#    validation-query: SELECT 1;

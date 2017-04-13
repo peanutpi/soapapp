@@ -1,0 +1,692 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://com.soap/app/producing-web-service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://com.soap/app/producing-web-service" targetNamespace="http://com.soap/app/producing-web-service">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified" targetNamespace="http://com.soap/app/producing-web-service">
+			<xs:complexType name="customer">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="country" type="xs:string" />
+					<xs:element minOccurs="0" name="id" type="xs:long" />
+					<xs:element minOccurs="0" name="name" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Void">
+				<xs:sequence></xs:sequence>
+			</xs:complexType>
+			<xs:element name="getCustomerRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getCustomerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="customer" type="tns:customer" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addCustomerRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="customer" type="tns:customer" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addCustomerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateCustomerRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="customer" type="tns:customer" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateCustomerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeCustomerRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeCustomerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getAllCustomerRequest"></xs:element>
+			<xs:element name="getAllCustomerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+							nillable="true" type="tns:customer" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:complexType name="address">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="city" type="xs:string" />
+					<xs:element minOccurs="0" name="id" type="xs:long" />
+					<xs:element minOccurs="0" name="street" type="xs:string" />
+					<xs:element minOccurs="0" name="number" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="getAddressRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="address" type="tns:address" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addAddressRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="address" type="tns:address" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateAddressRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="address" type="tns:address" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeAddressRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getAllAddressRequest"></xs:element>
+			<xs:element name="getAllAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+							nillable="true" type="tns:address" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:complexType name="item">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="id" type="xs:long" />
+					<xs:element minOccurs="0" name="name" type="xs:string" />
+					<xs:element minOccurs="0" name="description" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="getItemRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getItemResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="item" type="tns:item" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addItemRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="item" type="tns:item" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addItemResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateItemRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="item" type="tns:item" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateItemResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeItemRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeItemResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getAllItemRequest"></xs:element>
+			<xs:element name="getAllItemResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+							nillable="true" type="tns:item" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:complexType name="saleOrder">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="id" type="xs:long" />
+					<xs:element minOccurs="0" name="name" type="xs:string" />
+					<xs:element minOccurs="0" name="description" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="getSaleOrderRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getSaleOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="saleOrder" type="tns:saleOrder" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addSaleOrderRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="saleOrder" type="tns:saleOrder" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addSaleOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateSaleOrderRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="saleOrder" type="tns:saleOrder" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateSaleOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeSaleOrderRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="removeSaleOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="response" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getAllSaleOrderRequest"></xs:element>
+			<xs:element name="getAllSaleOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+							nillable="true" type="tns:saleOrder" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="addSaleOrderRequest">
+		<wsdl:part element="tns:addSaleOrderRequest" name="addSaleOrderRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateAddressResponse">
+		<wsdl:part element="tns:updateAddressResponse" name="updateAddressResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeAddressResponse">
+		<wsdl:part element="tns:removeAddressResponse" name="removeAddressResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateSaleOrderRequest">
+		<wsdl:part element="tns:updateSaleOrderRequest" name="updateSaleOrderRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCustomerRequest">
+		<wsdl:part element="tns:getCustomerRequest" name="getCustomerRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getItemResponse">
+		<wsdl:part element="tns:getItemResponse" name="getItemResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeCustomerResponse">
+		<wsdl:part element="tns:removeCustomerResponse" name="removeCustomerResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addAddressResponse">
+		<wsdl:part element="tns:addAddressResponse" name="addAddressResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeItemRequest">
+		<wsdl:part element="tns:removeItemRequest" name="removeItemRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateItemRequest">
+		<wsdl:part element="tns:updateItemRequest" name="updateItemRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateCustomerRequest">
+		<wsdl:part element="tns:updateCustomerRequest" name="updateCustomerRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateCustomerResponse">
+		<wsdl:part element="tns:updateCustomerResponse" name="updateCustomerResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAddressResponse">
+		<wsdl:part element="tns:getAddressResponse" name="getAddressResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeSaleOrderRequest">
+		<wsdl:part element="tns:removeSaleOrderRequest" name="removeSaleOrderRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllSaleOrderResponse">
+		<wsdl:part element="tns:getAllSaleOrderResponse" name="getAllSaleOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeAddressRequest">
+		<wsdl:part element="tns:removeAddressRequest" name="removeAddressRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllItemRequest">
+		<wsdl:part element="tns:getAllItemRequest" name="getAllItemRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addSaleOrderResponse">
+		<wsdl:part element="tns:addSaleOrderResponse" name="addSaleOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllItemResponse">
+		<wsdl:part element="tns:getAllItemResponse" name="getAllItemResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllAddressResponse">
+		<wsdl:part element="tns:getAllAddressResponse" name="getAllAddressResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getItemRequest">
+		<wsdl:part element="tns:getItemRequest" name="getItemRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addAddressRequest">
+		<wsdl:part element="tns:addAddressRequest" name="addAddressRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getSaleOrderRequest">
+		<wsdl:part element="tns:getSaleOrderRequest" name="getSaleOrderRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllCustomerRequest">
+		<wsdl:part element="tns:getAllCustomerRequest" name="getAllCustomerRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeCustomerRequest">
+		<wsdl:part element="tns:removeCustomerRequest" name="removeCustomerRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateSaleOrderResponse">
+		<wsdl:part element="tns:updateSaleOrderResponse" name="updateSaleOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllCustomerResponse">
+		<wsdl:part element="tns:getAllCustomerResponse" name="getAllCustomerResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateItemResponse">
+		<wsdl:part element="tns:updateItemResponse" name="updateItemResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addItemRequest">
+		<wsdl:part element="tns:addItemRequest" name="addItemRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addItemResponse">
+		<wsdl:part element="tns:addItemResponse" name="addItemResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllSaleOrderRequest">
+		<wsdl:part element="tns:getAllSaleOrderRequest" name="getAllSaleOrderRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addCustomerResponse">
+		<wsdl:part element="tns:addCustomerResponse" name="addCustomerResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeItemResponse">
+		<wsdl:part element="tns:removeItemResponse" name="removeItemResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAddressRequest">
+		<wsdl:part element="tns:getAddressRequest" name="getAddressRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCustomerResponse">
+		<wsdl:part element="tns:getCustomerResponse" name="getCustomerResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="updateAddressRequest">
+		<wsdl:part element="tns:updateAddressRequest" name="updateAddressRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="removeSaleOrderResponse">
+		<wsdl:part element="tns:removeSaleOrderResponse" name="removeSaleOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addCustomerRequest">
+		<wsdl:part element="tns:addCustomerRequest" name="addCustomerRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getSaleOrderResponse">
+		<wsdl:part element="tns:getSaleOrderResponse" name="getSaleOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getAllAddressRequest">
+		<wsdl:part element="tns:getAllAddressRequest" name="getAllAddressRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="SchemaPort">
+		<wsdl:operation name="addSaleOrder">
+			<wsdl:input message="tns:addSaleOrderRequest" name="addSaleOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:addSaleOrderResponse" name="addSaleOrderResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateAddress">
+			<wsdl:input message="tns:updateAddressRequest" name="updateAddressRequest"></wsdl:input>
+			<wsdl:output message="tns:updateAddressResponse" name="updateAddressResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeAddress">
+			<wsdl:input message="tns:removeAddressRequest" name="removeAddressRequest"></wsdl:input>
+			<wsdl:output message="tns:removeAddressResponse" name="removeAddressResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateSaleOrder">
+			<wsdl:input message="tns:updateSaleOrderRequest" name="updateSaleOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:updateSaleOrderResponse" name="updateSaleOrderResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCustomer">
+			<wsdl:input message="tns:getCustomerRequest" name="getCustomerRequest"></wsdl:input>
+			<wsdl:output message="tns:getCustomerResponse" name="getCustomerResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getItem">
+			<wsdl:input message="tns:getItemRequest" name="getItemRequest"></wsdl:input>
+			<wsdl:output message="tns:getItemResponse" name="getItemResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeCustomer">
+			<wsdl:input message="tns:removeCustomerRequest" name="removeCustomerRequest"></wsdl:input>
+			<wsdl:output message="tns:removeCustomerResponse" name="removeCustomerResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addAddress">
+			<wsdl:input message="tns:addAddressRequest" name="addAddressRequest"></wsdl:input>
+			<wsdl:output message="tns:addAddressResponse" name="addAddressResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeItem">
+			<wsdl:input message="tns:removeItemRequest" name="removeItemRequest"></wsdl:input>
+			<wsdl:output message="tns:removeItemResponse" name="removeItemResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateItem">
+			<wsdl:input message="tns:updateItemRequest" name="updateItemRequest"></wsdl:input>
+			<wsdl:output message="tns:updateItemResponse" name="updateItemResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateCustomer">
+			<wsdl:input message="tns:updateCustomerRequest" name="updateCustomerRequest"></wsdl:input>
+			<wsdl:output message="tns:updateCustomerResponse" name="updateCustomerResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAddress">
+			<wsdl:input message="tns:getAddressRequest" name="getAddressRequest"></wsdl:input>
+			<wsdl:output message="tns:getAddressResponse" name="getAddressResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeSaleOrder">
+			<wsdl:input message="tns:removeSaleOrderRequest" name="removeSaleOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:removeSaleOrderResponse" name="removeSaleOrderResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllSaleOrder">
+			<wsdl:input message="tns:getAllSaleOrderRequest" name="getAllSaleOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:getAllSaleOrderResponse" name="getAllSaleOrderResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllItem">
+			<wsdl:input message="tns:getAllItemRequest" name="getAllItemRequest"></wsdl:input>
+			<wsdl:output message="tns:getAllItemResponse" name="getAllItemResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllAddress">
+			<wsdl:input message="tns:getAllAddressRequest" name="getAllAddressRequest"></wsdl:input>
+			<wsdl:output message="tns:getAllAddressResponse" name="getAllAddressResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getSaleOrder">
+			<wsdl:input message="tns:getSaleOrderRequest" name="getSaleOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:getSaleOrderResponse" name="getSaleOrderResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllCustomer">
+			<wsdl:input message="tns:getAllCustomerRequest" name="getAllCustomerRequest"></wsdl:input>
+			<wsdl:output message="tns:getAllCustomerResponse" name="getAllCustomerResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addItem">
+			<wsdl:input message="tns:addItemRequest" name="addItemRequest"></wsdl:input>
+			<wsdl:output message="tns:addItemResponse" name="addItemResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addCustomer">
+			<wsdl:input message="tns:addCustomerRequest" name="addCustomerRequest"></wsdl:input>
+			<wsdl:output message="tns:addCustomerResponse" name="addCustomerResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SchemaPortSoap11" type="tns:SchemaPort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="addSaleOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input name="addSaleOrderRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="addSaleOrderResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="updateAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="removeAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateSaleOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input name="updateSaleOrderRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateSaleOrderResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCustomer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getCustomerRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getCustomerResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getItem">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getItemRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getItemResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeCustomer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="removeCustomerRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeCustomerResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="addAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="addAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeItem">
+			<soap:operation soapAction="" />
+			<wsdl:input name="removeItemRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeItemResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateItem">
+			<soap:operation soapAction="" />
+			<wsdl:input name="updateItemRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateItemResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="updateCustomer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="updateCustomerRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateCustomerResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="removeSaleOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input name="removeSaleOrderRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeSaleOrderResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllSaleOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getAllSaleOrderRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getAllSaleOrderResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllItem">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getAllItemRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getAllItemResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getAllAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getAllAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getSaleOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getSaleOrderRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getSaleOrderResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getAllCustomer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="getAllCustomerRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getAllCustomerResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addItem">
+			<soap:operation soapAction="" />
+			<wsdl:input name="addItemRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="addItemResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addCustomer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="addCustomerRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="addCustomerResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="SchemaPortService">
+		<wsdl:port binding="tns:SchemaPortSoap11" name="SchemaPortSoap11">
+			<soap:address location="http://localhost:8080/ws" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

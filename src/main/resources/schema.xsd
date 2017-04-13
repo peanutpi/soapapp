@@ -1,0 +1,347 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://com.soap/app/producing-web-service" targetNamespace="http://com.soap/app/producing-web-service"
+	elementFormDefault="qualified">
+
+	<xs:complexType name="customer">
+		<xs:sequence>
+			<xs:element name="country" type="xs:string" minOccurs="0" />
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="name" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Void">
+		<xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="getCustomerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCustomerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="customer" type="tns:customer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addCustomerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="customer" type="tns:customer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addCustomerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateCustomerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="customer" type="tns:customer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateCustomerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeCustomerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeCustomerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getAllCustomerRequest">
+	</xs:element>
+
+	<xs:element name="getAllCustomerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+					nillable="true" type="tns:customer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="address">
+		<xs:sequence>
+			<xs:element name="city" type="xs:string" minOccurs="0" />
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="street" type="xs:string" minOccurs="0" />
+			<xs:element name="number" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="getAddressRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getAddressResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="address" type="tns:address" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addAddressRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="address" type="tns:address" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addAddressResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateAddressRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="address" type="tns:address" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateAddressResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeAddressRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeAddressResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getAllAddressRequest">
+	</xs:element>
+
+	<xs:element name="getAllAddressResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+					nillable="true" type="tns:address" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="item">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="name" type="xs:string" minOccurs="0" />
+			<xs:element name="description" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="getItemRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="item" type="tns:item" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addItemRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="item" type="tns:item" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateItemRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="item" type="tns:item" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeItemRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getAllItemRequest">
+	</xs:element>
+
+	<xs:element name="getAllItemResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+					nillable="true" type="tns:item" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="saleOrder">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="name" type="xs:string" minOccurs="0" />
+			<xs:element name="description" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="getSaleOrderRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getSaleOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="saleOrder" type="tns:saleOrder" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addSaleOrderRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="saleOrder" type="tns:saleOrder" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addSaleOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateSaleOrderRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="saleOrder" type="tns:saleOrder" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateSaleOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeSaleOrderRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="removeSaleOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="response" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getAllSaleOrderRequest">
+	</xs:element>
+
+	<xs:element name="getAllSaleOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="response"
+					nillable="true" type="tns:saleOrder" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

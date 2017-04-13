@@ -1,0 +1,13 @@
+#Add a Customer
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://com.soap/app/producing-web-service">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prod:addCustomerRequest>
+         <prod:customer>
+            <prod:country>Argentina</prod:country>
+            <prod:id>2</prod:id>
+            <prod:name>Martin</prod:name>
+         </prod:customer>
+      </prod:addCustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

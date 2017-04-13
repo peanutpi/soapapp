@@ -1,0 +1,12 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://com.soap/app/producing-web-service">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:addAddressRequest>
+	<gs:city>sd</gs:city>
+	<gs:id>34</gs:id>
+	<gs:number>98415894152</gs:number>
+	<gs:street>sdaas21</gs:street>
+      </gs:addAddressRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
